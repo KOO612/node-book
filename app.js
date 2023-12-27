@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 app.set('port', process.env.PORT || 3000);
 
+// 서버에서 어떤 요청이 왔는지 로그
 app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use(
     // 쿠키 서명
     secret: process.env.COOKIE_SECRET,
     cookie: {
+      // httpOnly를 true로 설정해야 자바스크립트로 공격을 안당함
       httpOnly: true,
       secure: false,
     },
