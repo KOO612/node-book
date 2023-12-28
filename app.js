@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 dotenv.config();
+const indexRouter = require('./routes');
+
 const app = express();
 app.set('port', process.env.PORT || 3000);
 
@@ -33,6 +35,8 @@ app.use(
     name: 'session-cookie',
   })
 );
+
+app.use('/', indexRouter);
 
 app.use((req, res, next) => {
   console.log('모든 요청에 실행');
