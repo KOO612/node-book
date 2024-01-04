@@ -36,7 +36,6 @@ app.use((req, res, next) => {
   next(error);
 });
 
-// 확인
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
