@@ -54,6 +54,8 @@ class User extends Sequelize.Model {
     );
   }
   // 다른 모델과의 관계
-  static associate(db) {}
+  static associate(db) {
+    db.User.hasMany(db.Comment, { foreginKey: 'commentor', sourceKey: 'id' });
+  }
 }
 module.exports = User;
